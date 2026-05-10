@@ -217,6 +217,13 @@ async def _run_lesson_download(
             opts["merge_output_format"] = "mp4"
         if headers:
             opts["http_headers"] = headers
+        try:
+            import imageio_ffmpeg
+            ffmpeg_exe = imageio_ffmpeg.get_ffmpeg_exe()
+            if ffmpeg_exe:
+                opts["ffmpeg_location"] = ffmpeg_exe
+        except Exception:
+            pass
 
         def _hook(d):
             if d["status"] == "downloading":
