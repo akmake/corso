@@ -1,0 +1,263 @@
+{
+  "6068abbf-3896-4ae5-a8e3-d79ed2d12266": {
+    "id": "6068abbf-3896-4ae5-a8e3-d79ed2d12266",
+    "name": "ממשל ופוליטיקה",
+    "folder": "ממשל ופוליטיקה",
+    "created_at": "2026-05-03T11:31:26.072583",
+    "lessons": {
+      "eab63133-675b-4306-8e80-a8df438d65fd": {
+        "id": "eab63133-675b-4306-8e80-a8df438d65fd",
+        "folder": "שיעור 1 - שיעור 1",
+        "title": "שיעור 1",
+        "url": null,
+        "video_filename": "video.mp4",
+        "video_size_mb": 2548.4,
+        "download_job_id": null,
+        "download_error": null,
+        "transcript_txt": "video_transcript.txt",
+        "transcript_srt": "video_transcript.srt",
+        "transcript_job_id": null,
+        "created_at": "2026-05-03T11:35:31.057616",
+        "presentations": [
+          "מצגת דמוקרטיה  (2).pdf"
+        ]
+      },
+      "f350c178-2522-4216-8886-c30aa4fa6814": {
+        "id": "f350c178-2522-4216-8886-c30aa4fa6814",
+        "folder": "שיעור 2 - שיעור 2",
+        "title": "שיעור 2",
+        "url": null,
+        "video_filename": "video.mp4",
+        "video_size_mb": 2714.4,
+        "download_job_id": null,
+        "download_error": null,
+        "transcript_txt": "video_transcript.txt",
+        "transcript_srt": "video_transcript.srt",
+        "transcript_job_id": null,
+        "created_at": "2026-05-03T11:35:57.735630",
+        "presentations": [
+          "מצגת הרשות המבצעת.pdf"
+        ]
+      },
+      "4976546c-5508-430c-8d25-02606193bbbd": {
+        "id": "4976546c-5508-430c-8d25-02606193bbbd",
+        "folder": "שיעור 3 - שיעור 3",
+        "title": "שיעור 3",
+        "url": null,
+        "video_filename": "video.mp4",
+        "video_size_mb": 2412.7,
+        "download_job_id": null,
+        "download_error": null,
+        "transcript_txt": "video_transcript.txt",
+        "transcript_srt": "video_transcript.srt",
+        "transcript_job_id": null,
+        "created_at": "2026-05-03T11:36:37.266692",
+        "presentations": [
+          "מצגת הרשות המחוקקת.pdf"
+        ]
+      },
+      "7abc8d3f-ecf8-4bb2-9f7a-f965bf14df46": {
+        "id": "7abc8d3f-ecf8-4bb2-9f7a-f965bf14df46",
+        "folder": "שיעור 4 - שיעור 4",
+        "title": "שיעור 4",
+        "url": "https://souvod.bynetcdn.com/vod/smil:vod/openu/PRV6/fJIeKt8myc/App/fJIeKt8myc_10.smil/playlist.m3u8?md5=2Qi2vo-nvZ9ecCKQp0fcxA&expires=1777830630",
+        "video_filename": "video.mp4",
+        "video_size_mb": 2610.2,
+        "download_job_id": null,
+        "download_error": null,
+        "transcript_txt": "video_transcript.txt",
+        "transcript_srt": "video_transcript.srt",
+        "transcript_job_id": null,
+        "presentations": [
+          "מצגת הרשות השופטת.pdf"
+        ],
+        "created_at": "2026-05-03T12:51:05.015739"
+      },
+      "e33a7b2e-d42f-48b2-bf9d-ea55907b827a": {
+        "id": "e33a7b2e-d42f-48b2-bf9d-ea55907b827a",
+        "folder": "שיעור 5 - שיעור 5",
+        "title": "שיעור 5",
+        "url": "https://souvod.bynetcdn.com/vod/smil:vod/openu/PRV6/tk2svRC60F/App/tk2svRC60F_10.smil/playlist.m3u8?md5=G5C6vUd7YiyYJkwwo2i5nw&expires=1777831429",
+        "video_filename": "video.mp4",
+        "video_size_mb": 2081.2,
+        "download_job_id": null,
+        "download_error": null,
+        "transcript_txt": "video_transcript.txt",
+        "transcript_srt": "video_transcript.srt",
+        "transcript_job_id": null,
+        "presentations": [
+          "מצגת חוקה.pdf"
+        ],
+        "created_at": "2026-05-03T13:04:01.186797"
+      },
+      "41846517-eb1e-4dee-bdc0-8bf4bd6052ad": {
+        "id": "41846517-eb1e-4dee-bdc0-8bf4bd6052ad",
+        "folder": "שיעור 6 - שיעור 6",
+        "title": "שיעור 6",
+        "url": "https://souvod.bynetcdn.com/vod/smil:vod/openu/PRV6/ayfv2lxfBM/App/ayfv2lxfBM_10.smil/playlist.m3u8?md5=b64RZhrppx0983vBgeF_JQ&expires=1777831877",
+        "video_filename": "video.mp4",
+        "video_size_mb": 2404.9,
+        "download_job_id": null,
+        "download_error": null,
+        "transcript_txt": "שיעור 6 - שיעור 6_transcript.txt",
+        "transcript_srt": "שיעור 6 - שיעור 6_transcript.srt",
+        "transcript_job_id": null,
+        "presentations": [
+          "מצגת שורשי המערכת הפוליטית מעודכנת.pdf"
+        ],
+        "created_at": "2026-05-03T13:11:31.628106"
+      }
+    }
+  },
+  "5ee2ffe5-4a5a-433f-9719-901b0b296317": {
+    "id": "5ee2ffe5-4a5a-433f-9719-901b0b296317",
+    "name": "מבוא לגישות ושיטות",
+    "folder": "מבוא לגישות ושיטות",
+    "created_at": "2026-05-03T12:35:40.233156",
+    "lessons": {
+      "242badf2-dfa3-4ab0-808f-7528dda6e710": {
+        "id": "242badf2-dfa3-4ab0-808f-7528dda6e710",
+        "folder": "שיעור 1 - שיעור 1",
+        "title": "שיעור 1",
+        "url": null,
+        "video_filename": "video.mp4",
+        "video_size_mb": 2096.4,
+        "download_job_id": null,
+        "download_error": null,
+        "transcript_txt": "שיעור 1 - שיעור 1_transcript.txt",
+        "transcript_srt": "שיעור 1 - שיעור 1_transcript.srt",
+        "transcript_job_id": null,
+        "presentations": [],
+        "created_at": "2026-05-03T12:37:09.953861"
+      },
+      "436f6621-3941-4aca-be2e-0aae21c7dc17": {
+        "id": "436f6621-3941-4aca-be2e-0aae21c7dc17",
+        "folder": "שיעור 2 - שיעור 2",
+        "title": "שיעור 2",
+        "url": null,
+        "video_filename": "video.mp4",
+        "video_size_mb": 2145.7,
+        "download_job_id": null,
+        "download_error": null,
+        "transcript_txt": "video_transcript.txt",
+        "transcript_srt": "video_transcript.srt",
+        "transcript_job_id": null,
+        "presentations": [],
+        "created_at": "2026-05-03T12:38:06.507462"
+      },
+      "0db1f55b-5e59-4e98-aeab-66ebef8dad46": {
+        "id": "0db1f55b-5e59-4e98-aeab-66ebef8dad46",
+        "folder": "שיעור 3 - שיעור 3",
+        "title": "שיעור 3",
+        "url": null,
+        "video_filename": "video.mp4",
+        "video_size_mb": 2078.5,
+        "download_job_id": null,
+        "download_error": null,
+        "transcript_txt": "video_transcript.txt",
+        "transcript_srt": "video_transcript.srt",
+        "transcript_job_id": null,
+        "presentations": [],
+        "created_at": "2026-05-03T12:39:05.070992"
+      },
+      "116fa2d4-0a88-48c7-b0bc-690215b48881": {
+        "id": "116fa2d4-0a88-48c7-b0bc-690215b48881",
+        "folder": "שיעור 4 - שיעור 4",
+        "title": "שיעור 4",
+        "url": null,
+        "video_filename": "video.mp4",
+        "video_size_mb": 2544.7,
+        "download_job_id": null,
+        "download_error": null,
+        "transcript_txt": "video_transcript.txt",
+        "transcript_srt": "video_transcript.srt",
+        "transcript_job_id": null,
+        "presentations": [],
+        "created_at": "2026-05-03T12:39:59.961196"
+      },
+      "41b20e53-4a13-4fe6-90cd-49d537703525": {
+        "id": "41b20e53-4a13-4fe6-90cd-49d537703525",
+        "folder": "שיעור 5 - שיעור 5",
+        "title": "שיעור 5",
+        "url": null,
+        "video_filename": "video.mp4",
+        "video_size_mb": 2509.4,
+        "download_job_id": null,
+        "download_error": null,
+        "transcript_txt": "שיעור 5 - שיעור 5_transcript.txt",
+        "transcript_srt": "שיעור 5 - שיעור 5_transcript.srt",
+        "transcript_job_id": null,
+        "presentations": [],
+        "created_at": "2026-05-03T12:41:06.102261"
+      },
+      "269ffa0a-357c-4fba-b981-efaaa8db7084": {
+        "id": "269ffa0a-357c-4fba-b981-efaaa8db7084",
+        "folder": "שיעור 6 - שיעור 6",
+        "title": "שיעור 6",
+        "url": null,
+        "video_filename": "video.mp4",
+        "video_size_mb": 2534.8,
+        "download_job_id": null,
+        "download_error": null,
+        "transcript_txt": "שיעור 6 - שיעור 6_transcript.txt",
+        "transcript_srt": "שיעור 6 - שיעור 6_transcript.srt",
+        "transcript_job_id": null,
+        "presentations": [],
+        "created_at": "2026-05-03T12:42:17.966735"
+      }
+    }
+  },
+  "546932c7-04f7-48e4-9b09-60c64ebd2d1f": {
+    "id": "546932c7-04f7-48e4-9b09-60c64ebd2d1f",
+    "name": "המשפט המינהלי",
+    "folder": "המשפט המינהלי",
+    "created_at": "2026-05-03T13:19:36.681789",
+    "lessons": {
+      "1407a53c-4311-4fd5-af39-110a14119bb5": {
+        "id": "1407a53c-4311-4fd5-af39-110a14119bb5",
+        "folder": "שיעור 1 - שיעור 1",
+        "title": "שיעור 1",
+        "url": "https://souvod.bynetcdn.com/vod/smil:vod/openu/PRV6/WxK7wtx592/App/WxK7wtx592_10.smil/playlist.m3u8?md5=guNdxewq5LbfKKfV3GJFag&expires=1777832411",
+        "video_filename": "video.mp4",
+        "video_size_mb": 2160.5,
+        "download_job_id": null,
+        "download_error": null,
+        "transcript_txt": "video_transcript.txt",
+        "transcript_srt": "video_transcript.srt",
+        "transcript_job_id": null,
+        "presentations": [],
+        "created_at": "2026-05-03T13:20:20.703821"
+      },
+      "97ce4f4d-77e2-4f6d-97c6-f8fe02b4e7de": {
+        "id": "97ce4f4d-77e2-4f6d-97c6-f8fe02b4e7de",
+        "folder": "שיעור 2 - שיעור 2",
+        "title": "שיעור 2",
+        "url": "https://souvod.bynetcdn.com/vod/smil:vod/openu/PRV6/CrDBpFggsd/App/CrDBpFggsd_10.smil/playlist.m3u8?md5=nPCOJPuHKIi6ntrDJtwG1A&expires=1777839902",
+        "video_filename": "video.mp4",
+        "video_size_mb": 2130.2,
+        "download_job_id": null,
+        "download_error": null,
+        "transcript_txt": null,
+        "transcript_srt": null,
+        "transcript_job_id": null,
+        "presentations": [],
+        "created_at": "2026-05-03T15:25:13.451649"
+      },
+      "74173f4c-82bb-4769-90e5-f2cf5e880ba8": {
+        "id": "74173f4c-82bb-4769-90e5-f2cf5e880ba8",
+        "folder": "שיעור 3 - שיעור 3",
+        "title": "שיעור 3",
+        "url": "https://souvod.bynetcdn.com/vod/smil:vod/openu/PRV6/QGem3wFSVQ/App/QGem3wFSVQ_10.smil/playlist.m3u8?md5=8BEy4JBFEiwoeRXTKnt6LA&expires=1778444132",
+        "video_filename": "video.mp4",
+        "video_size_mb": 2220.7,
+        "download_job_id": null,
+        "download_error": null,
+        "transcript_txt": null,
+        "transcript_srt": null,
+        "transcript_job_id": "18aba73d-fa66-484e-9b7c-3d48b0ee7347",
+        "presentations": [],
+        "created_at": "2026-05-10T15:16:45.807271"
+      }
+    }
+  }
+}

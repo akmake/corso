@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import core.openu_downloader\")",
+      "Bash(python -c \"import core.openu_downloader; import main; print\\(''OK''\\)\")",
+      "Bash(ls \"c:\\\\Users\\\\yosef\\\\Documents\\\\GitHub\\\\Webint\\\\python\\\\core\"\" && ls \"c:UsersyosefDocumentsGitHubWebintpythondownloads\"\")",
+      "Bash(python -c ':*)",
+      "Bash(go version:*)",
+      "Bash(cargo --version)",
+      "Bash(docker --version)",
+      "Bash(pip --version)",
+      "Bash(powershell.exe -Command ':*)",
+      "Bash(dalfox version *)",
+      "Bash(amass --version)",
+      "Bash(amass version *)",
+      "Bash(nmap --version)",
+      "Bash(powershell -Command \"& 'C:\\\\Program Files \\(x86\\)\\\\Nmap\\\\nmap.exe' --version\")",
+      "Bash(powershell -Command \"& 'C:\\\\Program Files\\\\Nmap\\\\nmap.exe' --version\")",
+      "Bash(pip install *)",
+      "Bash(go install *)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\yosef dahan\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+    ]
+  }
+}

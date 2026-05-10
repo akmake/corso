@@ -1,0 +1,373 @@
+
+# ============================================================
+#   דוח בדיקת אבטחה - www.itzfoto.co.il
+#   תאריך: 13/04/2026 (עודכן: 17/04/2026)
+#   נבדק על ידי: בעל האתר (בדיקה עצמית)
+# ============================================================
+
+# =====================
+#  1. מידע כללי על האתר
+# =====================
+
+======= גרסה ישנה (Next.js + Vercel) - כבר לא פעיל =======
+פלטפורמה:        Next.js (App Router / Turbopack)
+הוסטינג:         Vercel
+אחסון תמונות:    Dropbox ישיר מ-API routes
+Build ID:        jcxNddl9utkjILSbuDX2B
+
+======= גרסה חדשה (Vite SPA + Supabase) - פעיל כעת =======
+פלטפורמה:        Vite SPA (React)
+הוסטינג:         Vercel / Static
+Backend:         Supabase (PostgreSQL + Auth + Edge Functions)
+אחסון תמונות:    Dropbox (דרך Supabase Edge Functions)
+Supabase URL:    https://hfqdengmejmekljcexmm.supabase.co
+Anon Key:        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI... (חשוף ב-JS)
+JS Bundle:       /assets/index-JngCYylR.js
+
+טבלאות Supabase:
+  - clients (שם לקוח, נתיב דרופבוקס, הגדרות בחירה)
+  - client_photo_selections (בחירות תמונות של לקוחות)
+  - client_categories (קטגוריות לקוחות)
+  - user_roles (תפקידי משתמשים - admin/client)
+  - profiles (ריק)
+
+Edge Functions (Dropbox):
+  - dropbox-list-photos   (שליפת תמונות מתיקייה)
+  - dropbox-list-folders  (רשימת תיקיות)
+  - dropbox-get-thumbnail (תמונות מוקטנות)
+  - dropbox-upload-file   (העלאת קבצים)
+
+# =====================
+#  2. מבנה האתר שנמצא
+# =====================
+
+עמודים (SPA - כולם מחזירים index.html 1057 bytes):
+  /              -> דף הבית
+  /login         -> כניסת לקוחות
+  /admin-login   -> כניסת מנהל
+  /admin         -> פאנל ניהול
+  /gallery       -> גלריית תמונות
+
+API:
+  /api/broadcast -> SPA fallback (כבר לא API אמיתי)
+  הישנים (/api/photos, /api/login וכו') -> כולם מחזירים index.html - הוסרו!
+
+# =====================
+#  3. פרצות שנמצאו (גרסה חדשה - 17/04/2026)
+# =====================
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  פרצה #1: dropbox-upload-file ללא אימות (חומרה: קריטית!!!)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+תיאור:
+  ה-Edge Function "dropbox-upload-file" מאפשר לכל אחד בעולם
+  להעלות קבצים לחשבון הדרופבוקס שלך. בלי שום אימות. אפילו
+  בלי anon key. כלום. אפס.
+
+הוכחה - מה שרצתי:
+
+  # בלי שום headers - אפילו לא API key:
+  POST https://hfqdengmejmekljcexmm.supabase.co/functions/v1/dropbox-upload-file
+  Content-Type: application/json
+  
+  {"path": "/test_security_audit_delete_me.txt", "content": "SECURITY AUDIT"}
+  
+  תוצאה: 200 - {"success":true,"path":"/test_security_audit_delete_me.txt"}
+
+  ← הקובץ נכתב בהצלחה לדרופבוקס שלך. בלי שום אימות.
+
+כיצד לנצל:
+  - תוקף יכול להעלות קבצים זדוניים לדרופבוקס שלך
+  - תוקף יכול לדרוס קבצים קיימים (כולל תמונות של לקוחות)
+  - תוקף יכול למלא את נפח האחסון שלך
+  - הפקודה עובדת מכל מקום, מכל דפדפן, מכל סקריפט
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  פרצה #2: Signup פתוח לכולם (חומרה: גבוהה)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+תיאור:
+  כל אחד יכול להירשם לאתר דרך Supabase Auth.
+  נכון שיש אימות אימייל, אבל:
+  1. אין הגבלה על רישום (אפשר ליצור מאות חשבונות)
+  2. מי שמאשר אימייל מקבל חשבון authenticated
+  3. RLS policies עשויות לתת גישה ל-authenticated users
+
+הוכחה:
+
+  POST https://hfqdengmejmekljcexmm.supabase.co/auth/v1/signup
+  {"email": "secaudit_test_xz9@protonmail.com", "password": "Xk9$mPq2vR!nLw"}
+  
+  תוצאה: 200 - משתמש נוצר!
+  {
+    "id": "4d02d359-6717-4869-bdf6-0b18fbea8b8d",
+    "role": "authenticated",
+    "email": "secaudit_test_xz9@protonmail.com",
+    "confirmation_sent_at": "2026-04-17T01:29:01Z"
+  }
+
+  ← נוצר בהצלחה. רק צריך ללחוץ על הלינק באימייל ויש חשבון.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  פרצה #3: dropbox-list-photos/folders בודקים auth חלקית (חומרה: בינונית-גבוהה)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+תיאור:
+  שלושת ה-edge functions (list-photos, list-folders, get-thumbnail) 
+  דורשים auth token, אבל לא בודקים אם המשתמש מורשה לראות
+  את התיקייה הספציפית. כל משתמש authenticated יכול לגשת
+  לכל תיקייה בדרופבוקס.
+
+הוכחה מהקוד (JS):
+  // get-thumbnail שולח את ה-session token ותו לא:
+  const {data:{session}} = await oe.auth.getSession()
+  const token = session?.access_token
+  fetch(`https://.../functions/v1/dropbox-get-thumbnail`, {
+    headers: {Authorization: `Bearer ${token}`},
+    body: JSON.stringify({path: h, size: p})
+  })
+  
+  ← ה-path מגיע מהלקוח. אין בדיקה שהמשתמש מורשה לאותה תיקייה.
+  ← כל authenticated user יכול לבקש כל path.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  פרצה #4: Supabase anon key + URL חשופים בקוד (חומרה: בינונית)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+תיאור:
+  ה-Supabase URL והanon key חשופים ב-JS bundle.
+  זה "רגיל" בארכיטקטורת Supabase, אבל מחייב RLS חזק.
+  
+  בנוסף, הanon key פג תוקף רק ב-2092 (66 שנה).
+
+נתונים:
+  URL:  https://hfqdengmejmekljcexmm.supabase.co
+  Key:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+  Role: anon
+  Exp:  2092 (!)
+
+# =====================
+#  3b. מה שתוקן מהגרסה הקודמת (שיפורים)
+# =====================
+
+[+] API routes ישנים (/api/photos וכו') - הוסרו! עכשיו SPA fallback
+[+] אימות עבר מ-sessionStorage ל-Supabase Auth (הרבה יותר טוב)
+[+] RLS על טבלאות - anon לא יכול לקרוא clients/selections
+[+] Admin API (auth/v1/admin) - חסום כראוי (403)
+[+] Anonymous signups - מבוטל
+[+] Phone signups - מבוטל
+[+] Edge functions (למעט upload) - דורשים auth token
+
+# =====================
+#  3c. פרצות ישנות שכבר אינן רלוונטיות
+# =====================
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  פרצה #1: API ללא אימות (חומרה: קריטית)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+תיאור:
+  כל ה-API routes (photos, save-selection, get-selection, finalize)
+  לא בודקים אם המשתמש מחובר. אין בדיקת session, cookie, או token.
+  
+  כל אחד יכול לשלוח POST ישירות ולקבל תוצאות.
+
+הוכחה - מה שרצתי:
+
+  # בדיקה 1: POST ל-/api/photos בלי שום login לפניו
+  
+  curl -X POST https://www.itzfoto.co.il/api/photos \
+    -H "Content-Type: application/json" \
+    -d '{"folder": "test", "page": 1, "limit": 20}'
+  
+  תוצאה: 500 - {"error":"Response failed with a 409 code"}
+  
+  ← השגיאה 409 מגיעה מדרופבוקס (לא מצא תיקייה בשם "test")
+  ← אבל שים לב: השרת בכלל ניסה לגשת לדרופבוקס!
+  ← אין בשום שלב בדיקה האם אני מחובר
+
+  # בדיקה 2: folder ריק
+  
+  curl -X POST https://www.itzfoto.co.il/api/photos \
+    -H "Content-Type: application/json" \
+    -d '{"folder": "", "page": 1, "limit": 20}'
+  
+  תוצאה: 500 - {"error":"Response failed with a 400 code"}
+  
+  ← 400 מדרופבוקס = path לא תקין. השרת שוב ניסה בלי אימות.
+
+  # בדיקה 3: folder עם ניסיון path traversal
+  
+  curl -X POST https://www.itzfoto.co.il/api/photos \
+    -H "Content-Type: application/json" \
+    -d '{"folder": "../", "page": 1, "limit": 20}'
+  
+  תוצאה: 500 - {"error":"Response failed with a 409 code"}
+
+מסקנה:
+  ← מי שמנחש שם תיקייה נכון של לקוח - מקבל את כל התמונות שלו
+  ← אין שום אימות server-side
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  פרצה #2: אימות client-side בלבד (חומרה: קריטית)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+תיאור:
+  מנגנון האימות עובד ככה:
+  1. משתמש מתחבר ב-/api/login
+  2. השרת מחזיר אובייקט user עם שם folder
+  3. ה-JavaScript שומר את זה ב-sessionStorage
+  4. עמוד /gallery קורא מ-sessionStorage ואם אין - מפנה ל-/login
+
+  הבעיה: אין session צד-שרת. ה-"אימות" הוא רק redirect ב-JavaScript.
+
+הוכחה - קוד מתוך JS שחולץ מהאתר:
+
+  // מתוך /_next/static/chunks/0yo~sk8akq7lb.js (עמוד Login)
+  // אחרי login מוצלח:
+  sessionStorage.setItem("client", JSON.stringify(r.user))
+  window.location.href = "/gallery"
+
+  // מתוך /_next/static/chunks/01sxyhlyrg.~w.js (עמוד Gallery)
+  // בטעינת העמוד:
+  let e = JSON.parse(sessionStorage.getItem("client"))
+  e ? (a(e), E(e, y, b)) : window.location.href = "/login"
+
+כיצד לעקוף:
+  בקונסול הדפדפן ב-/gallery:
+  
+  sessionStorage.setItem("client", JSON.stringify({
+    folder: "שם_תיקייה_של_לקוח",
+    username: "test"
+  }))
+  location.reload()
+  
+  → זהו! יש גישה מלאה לתמונות של אותו לקוח.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  פרצה #3: CORS פתוח לעולם (חומרה: גבוהה)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+תיאור:
+  הכותרת בתגובת השרת:
+  Access-Control-Allow-Origin: *
+  
+  זה אומר שכל אתר אחר בעולם יכול לשלוח בקשות ל-API שלך
+  מתוך JavaScript. תוקף יכול ליצור אתר שנראה לגיטימי,
+  וברקע שולח בקשות ל-API שלך.
+
+הוכחה - headers שקיבלתי:
+
+  HTTP/1.1 200
+  Access-Control-Allow-Origin: *
+  Server: Vercel
+  X-Nextjs-Prerender: 1
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  פרצה #4: עמוד /gallery נגיש בלי login (חומרה: בינונית)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+תיאור:
+  עמוד /gallery מחזיר 200 עם HTML מלא, כולל כל קוד ה-JavaScript.
+  ה-redirect ל-/login קורה רק ב-JavaScript אחרי שהעמוד כבר נטען.
+  
+  זה חושף את כל הלוגיקה העסקית, שמות API, ומבנה הנתונים.
+
+הוכחה:
+
+  curl https://www.itzfoto.co.il/gallery
+  → סטטוס 200, 10,159 bytes של HTML+JS מלא
+  
+  בתוך ה-HTML רואים את כל מבנה הגלריה: כפתורי בחירה,
+  קטגוריות, עימוד, וכל הממשק - עוד לפני שהמשתמש מחובר.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  פרצה #5: אין rate limiting ב-login (חומרה: בינונית)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+תיאור:
+  אין הגבלה על כמות ניסיונות כניסה.
+  אפשר להריץ brute force ללא הגבלה.
+
+הוכחה - 5 ניסיונות רצופים ללא חסימה:
+
+  POST /api/login {"username":"admin","password":"admin"}     → 401
+  POST /api/login {"username":"admin","password":"123456"}    → 401
+  POST /api/login {"username":"test","password":"test"}       → 401
+  POST /api/login {"username":"admin","password":"password"}  → 401
+  POST /api/login {"username":"demo","password":"demo"}       → 401
+  
+  ← כל הבקשות עברו. אין חסימה, אין delay, אין captcha.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  פרצה ישנה #6: שמות תיקיות ניתנים לניחוש (חומרה: גבוהה)
+  [עדיין רלוונטי! - תיקיות דרופבוקס לא שונו]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+תיאור:
+  מכיוון שלכל לקוח יש תיקייה בדרופבוקס לפי שמו, וה-Edge Functions
+  מקבלים את שם התיקייה ישירות מהקליינט, מספיק לנחש שם
+  של לקוח כדי לגשת לתמונות שלו (בשילוב עם authenticated session).
+
+# =====================
+#  4. המלצות תיקון (גרסה חדשה)
+# =====================
+
+[קריטי - לתקן מיידית!!!]
+
+1. dropbox-upload-file - הוסף אימות + הרשאה:
+   - הוסף בדיקת auth token בתחילת הפונקציה
+   - ודא שרק admin יכול להעלות קבצים
+   - זה הדבר הכי דחוף - כל אחד יכול לכתוב לדרופבוקס שלך
+
+2. סגור signup:
+   - בדאשבורד Supabase: Authentication > Settings > Disable signup
+   - או: הוסף restrictive policy שמאפשר רק emails ספציפיים
+   - כרגע כל אחד יכול ליצור חשבון
+
+[חשוב מאוד]
+
+3. הוסף authorization ב-Edge Functions:
+   - לא מספיק לבדוק שיש auth token
+   - צריך לוודא שה-USER מורשה לאותה FOLDER ספציפית
+   - דוגמה: משתמש X יכול לראות רק את clients_photos/X ולא אחרים
+   
+4. שנה שמות תיקיות ל-UUID:
+   - במקום "כהן_חתונה" -> UUID אקראי
+   - שמור מיפוי בטבלת clients
+
+[רצוי]
+
+5. הוסף RLS מחמיר על user_roles:
+   - ודא שאף אחד לא יכול להכניס את עצמו כ-admin
+   
+6. הוסף rate limiting ל-signup ו-login:
+   - Supabase יש rate limiting מובנה, ודא שהוא פעיל ומוגדר נכון
+
+7. הוסף CSP headers ו-X-Frame-Options
+
+# =====================
+#  5. סיכום (גרסה חדשה)
+# =====================
+
+  סה"כ פרצות חדשות שנמצאו: 4
+  - קריטית:  1 (upload ללא אימות)
+  - גבוהה:   1 (signup פתוח)
+  - בינונית+: 1 (edge functions - authorization חסר)
+  - בינונית:  1 (anon key חשוף)
+
+  מה שתוקן לעומת הגרסה הישנה:
+  - API routes ישנים הוסרו לחלוטין (+++)
+  - אימות עבר ל-Supabase Auth (+++)
+  - RLS פעיל על טבלאות (++)
+  - Client-side auth הוחלף ב-server auth (++)
+
+  אבל - עדיין יש בעיה קריטית אחת:
+  dropbox-upload-file חשוף לחלוטין. תקן את זה עכשיו.
+
+# ============================================================
+#  סוף הדוח (עודכן 17/04/2026)
+# ============================================================
+#   סוף הדוח
+# ============================================================

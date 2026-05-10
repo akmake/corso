@@ -1,0 +1,34 @@
+fastapi>=0.111.0
+uvicorn[standard]>=0.29.0
+pydantic>=2.0.0
+aiofiles>=23.2.1
+celery>=5.4.0
+redis>=5.0.4
+neo4j>=5.20.0
+playwright>=1.43.0
+duckduckgo-search>=6.0.0
+httpx>=0.27.0
+beautifulsoup4>=4.12.0
+lxml>=5.2.0
+dnspython>=2.6.0
+python-whois>=0.9.4
+phonenumbers>=8.13.0
+yt-dlp>=2024.1.0
+imageio-ffmpeg>=0.5.0
+faster-whisper>=1.1.0
+cryptography>=42.0.0
+python-multipart>=0.0.9
+
+# ── Optional: External OSINT tools (pip-installable) ──────────────────────
+# Install these for enhanced scanning (auto-detected at runtime):
+maigret>=0.4.4              # Username OSINT — 2,500+ sites (vs 83 built-in)
+holehe>=1.61                # Email → service registration check — 120+ services
+# theHarvester — install manually: git clone https://github.com/laramies/theHarvester
+
+# ── Optional: Go-based tools (require Go installed) ──────────────────────
+# Install via: go install github.com/projectdiscovery/<tool>/v2/cmd/<tool>@latest
+# subfinder    — subdomain enumeration from 40+ sources
+# nuclei       — vulnerability scanner with 7,000+ templates
+# ffuf         — fast directory fuzzer
+# katana       — web crawler
+# trufflehog   — secret scanner with 700+ patterns (go install github.com/trufflesecurity/trufflehog/v3@latest)

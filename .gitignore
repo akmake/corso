@@ -1,0 +1,37 @@
+# dependencies
+node_modules/
+**/node_modules/
+
+# common junk
+.DS_Store
+.env
+.env.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# python helper artifacts
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.nox/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+
+# python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# local python runtime files
+python/*_out.log
+python/*_err.log
+python/downloads/_tmp_audio_*.wav

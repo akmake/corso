@@ -1,0 +1,80 @@
+
+=== /_next/static/chunks/0uatvedpciep6.js (16808 bytes) ===
+
+=== /_next/static/chunks/0d3shmwh5_nmn.js (54644 bytes) ===
+
+=== /_next/static/chunks/0dgq26a5_oy.a.js (50702 bytes) ===
+  FOUND [fetch(]: ...{e.route}" has a \`generateViewport\` that depends on Request data (\`cookies()\`, etc...) or uncached external data (\`fetch(...)\`, etc...) without explicitly allowing fully dynamic rendering. See more info here: https://nextjs.org/docs/message...
+    (2 total occurrences)
+
+=== /_next/static/chunks/0bogtdbh.dcu1.js (227537 bytes) ===
+  FOUND [sl.]: ...)&&(t=e._retryCache=new iG),t;default:throw Error(u(435,e.tag))}}(e);t.forEach(function(t){if(!n.has(t)){n.add(t);var r=sL.bind(null,e,t);t.then(r,r)}})}function ur(e,t,n){var r=t.deletions;if(null!==r)for(var l=0;l<r.length;l++){var a=r[l],o=...
+  FOUND [password]: ...ail)&&"data"in e?e.data:null}var nS=!1,nk={color:!0,date:!0,datetime:!0,"datetime-local":!0,email:!0,month:!0,number:!0,password:!0,range:!0,search:!0,tel:!0,text:!0,time:!0,url:!0,week:!0};function nE(e){var t=e&&e.nodeName&&e.nodeName.toLowerCase...
+    (2 total occurrences)
+  FOUND [images]: ...Type){n.nodeValue=t;return}}e.textContent=t}var tk=new Set("animationIterationCount aspectRatio borderImageOutset borderImageSlice borderImageWidth boxFlex boxFlexGroup boxOrdinalGroup columnCount columns flex flexGrow flexPositive flexShrink fle...
+    (14 total occurrences)
+
+=== /_next/static/chunks/0257pdz1-imal.js (149533 bytes) ===
+  FOUND [token]: ...currentScript:void 0,43369,(e,t,r)=>{"use strict";let n;Object.defineProperty(r,"__esModule",{value:!0});var a={getAssetToken:function(){return o},getAssetTokenQuery:function(){return c},getDeploymentId:function(){return u},getDeploymentIdQuery:...
+    (4 total occurrences)
+  FOUND [folder]: ...import",q="private-next-rsc-action-encryption",Y="private-next-rsc-action-client-wrapper",W="You can not have a '_next' folder inside of your public folder. This conflicts with the internal '/_next' route. https://nextjs.org/docs/messages/public-...
+    (3 total occurrences)
+  FOUND [fetch(]: ...;let d=(0,p.getDeploymentId)();d&&(t["x-deployment-id"]=d);let h=new URL(e);(0,f.setCacheBustingSearchParam)(h,t);let y=fetch(h,{credentials:"same-origin",headers:t,priority:r||void 0,signal:l}).then(S),_=y.then(({response:e})=>e),g=a?(u=_,s=t,v(...
+    (2 total occurrences)
+  FOUND [images]: ...=typeof t.fetchPriority?t.fetchPriority:void 0,referrerPolicy:"string"==typeof t.referrerPolicy?t.referrerPolicy:void 0,imageSrcSet:"string"==typeof t.imageSrcSet?t.imageSrcSet:void 0,imageSizes:"string"==typeof t.imageSizes?t.imageSizes:void 0,m...
+    (6 total occurrences)
+
+=== /_next/static/chunks/01xlw8hd842-c.js (3377 bytes) ===
+
+=== /_next/static/chunks/0ht900cau6_ur.js (17472 bytes) ===
+
+--- /login (7016 bytes) ---
+  FOUND [password]: ...3;background:#111;color:#fff;font-size:16px" required="" value=""/><input type="password" placeholder="סיסמה" style="padding:12px;border-radius:8px;border:1px solid #33...
+
+--- /gallery (10159 bytes) ---
+  FOUND [gallery]: ...div hidden=""><!--$--><!--/$--></div><div dir="rtl" class="jsx-431ae97f0bbe818a gallery-container"><aside class="jsx-431ae97f0bbe818a"><img src="/logo.png" style="max-...
+
+--- /api/photos (41 bytes) ---
+ERROR: HTTP Error 405: Method Not Allowed
+
+--- /api/gallery (32 bytes) ---
+ERROR: HTTP Error 404: Not Found
+
+--- /api/images (32 bytes) ---
+ERROR: HTTP Error 404: Not Found
+
+--- /api/folders (32 bytes) ---
+ERROR: HTTP Error 404: Not Found
+
+--- /api/dropbox (32 bytes) ---
+ERROR: HTTP Error 404: Not Found
+
+--- /api/auth/session (32 bytes) ---
+ERROR: HTTP Error 404: Not Found
+
+--- /api/auth/providers (32 bytes) ---
+ERROR: HTTP Error 404: Not Found
+
+--- /api/auth/csrf (32 bytes) ---
+ERROR: HTTP Error 404: Not Found
+
+--- /api/user (32 bytes) ---
+ERROR: HTTP Error 404: Not Found
+
+--- /api/users (32 bytes) ---
+ERROR: HTTP Error 404: Not Found
+
+
+=== TRYING _NEXT/DATA PATHS ===
+
+--- /_next/data/jcxNddl9utkjILSbuDX2B/index.json ---
+ERROR: HTTP Error 404: Not Found
+
+--- /_next/data/jcxNddl9utkjILSbuDX2B/login.json ---
+ERROR: HTTP Error 404: Not Found
+
+--- /_next/data/jcxNddl9utkjILSbuDX2B/gallery.json ---
+ERROR: HTTP Error 404: Not Found
+
+--- /_next/data/jcxNddl9utkjILSbuDX2B/dashboard.json ---
+ERROR: HTTP Error 404: Not Found

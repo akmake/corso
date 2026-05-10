@@ -1,0 +1,11 @@
+# dependencies
+node_modules/
+**/node_modules/
+
+# common junk
+.DS_Store
+.env
+.env.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

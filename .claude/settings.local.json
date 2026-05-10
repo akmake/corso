@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l c:/Users/yosef/Documents/GitHub/Webint/python/core/*.py)",
+      "Bash(start cmd:*)",
+      "Bash(curl -s \"https://data.gov.il/api/3/action/datastore_search?resource_id=be5b7935-3922-423d-b7b4-51df139a4f15&q=כהן&limit=2\")",
+      "Bash(curl -s \"https://www.guidestar.org.il/api/search?searchTerm=כהן&pageSize=2\" -H \"Referer: https://www.guidestar.org.il/\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(list\\(d.keys\\(\\)\\)\\); print\\(''''orgs:'''', len\\(d.get\\(''''organizations'''',d.get\\(''''results'''',[]\\)\\)\\)\\)\")",
+      "Bash(choco install:*)",
+      "Bash(powershell.exe -Command ':*)",
+      "Bash(python -c \"import imageio_ffmpeg; print\\(imageio_ffmpeg.get_ffmpeg_exe\\(\\)\\)\")",
+      "Bash(py -0)",
+      "Bash(where python *)",
+      "Bash(where py *)",
+      "Bash(pip list *)",
+      "Bash(perl --version)",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('python/core/dir_fuzzer.py'\\).read\\(\\)\\); print\\('OK'\\)\")",
+      "Bash(trufflehog --version)",
+      "Bash(trufflehog3 --version)",
+      "Bash(python -m trufflehog --version)",
+      "Bash(trufflehog url *)",
+      "Bash(trufflehog --help)",
+      "Bash(trufflehog --help-long)",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('python/core/secret_scanner.py', encoding='utf-8'\\).read\\(\\)\\); print\\('OK'\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('python/core/advanced_auditor.py', encoding='utf-8'\\).read\\(\\)\\); print\\('OK'\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('python/core/auditor.py', encoding='utf-8'\\).read\\(\\)\\); print\\('OK'\\)\")"
+    ]
+  }
+}
